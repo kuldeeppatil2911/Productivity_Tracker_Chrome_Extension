@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity Tracker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Productivity Tracker</h1>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot active"></span>
+                <span>Active</span>
+            </div>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-button active" data-tab="dashboard">Dashboard</button>
+            <button class="tab-button" data-tab="blocking">Blocking</button>
+            <button class="tab-button" data-tab="settings">Settings</button>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div class="tab-content active" id="dashboard">
+            <div class="today-stats">
+                <h3>Today's Activity</h3>
+                <div class="stat-card">
+                    <div class="stat-item">
+                        <span class="stat-label">Total Time</span>
+                        <span class="stat-value" id="totalTime">0h 0m</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Productive Time</span>
+                        <span class="stat-value productive" id="productiveTime">0h 0m</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Distracting Time</span>
+                        <span class="stat-value distracting" id="distractingTime">0h 0m</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="current-site">
+                <h3>Current Site</h3>
+                <div class="site-info">
+                    <span class="site-name" id="currentSite">Loading...</span>
+                    <span class="site-time" id="currentSiteTime">0m</span>
+                </div>
+            </div>
+
+            <div class="top-sites">
+                <h3>Top Sites Today</h3>
+                <div class="sites-list" id="topSites">
+                    <!-- Sites will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <button class="btn-primary" id="viewReport">View Full Report</button>
+        </div>
+
+        <!-- Blocking Tab -->
+        <div class="tab-content" id="blocking">
+            <div class="blocking-controls">
+                <h3>Site Blocking</h3>
+                <div class="toggle-container">
+                    <label class="toggle">
+                        <input type="checkbox" id="blockingEnabled">
+                        <span class="slider"></span>
+                    </label>
+                    <span>Enable Site Blocking</span>
+                </div>
+            </div>
+
+            <div class="blocked-sites">
+                <h4>Blocked Sites</h4>
+                <div class="add-site">
+                    <input type="text" id="newBlockedSite" placeholder="Enter website URL">
+                    <button class="btn-secondary" id="addBlockedSite">Add</button>
+                </div>
+                <div class="sites-list" id="blockedSitesList">
+                    <!-- Blocked sites will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="focus-mode">
+                <h4>Focus Mode</h4>
+                <div class="focus-timer">
+                    <input type="number" id="focusMinutes" min="1" max="180" value="25" placeholder="Minutes">
+                    <button class="btn-primary" id="startFocus">Start Focus Session</button>
+                </div>
+                <div class="focus-status" id="focusStatus" style="display: none;">
+                    <span>Focus session active: </span>
+                    <span id="focusTimeRemaining">25:00</span>
+                    <button class="btn-secondary" id="stopFocus">Stop</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="tab-content" id="settings">
+            <div class="settings-section">
+                <h3>Categories</h3>
+                <div class="category-settings">
+                    <h4>Productive Sites</h4>
+                    <div class="add-site">
+                        <input type="text" id="newProductiveSite" placeholder="Enter website URL">
+                        <button class="btn-secondary" id="addProductiveSite">Add</button>
+                    </div>
+                    <div class="sites-list" id="productiveSitesList">
+                        <!-- Productive sites will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="category-settings">
+                    <h4>Distracting Sites</h4>
+                    <div class="add-site">
+                        <input type="text" id="newDistractingSite" placeholder="Enter website URL">
+                        <button class="btn-secondary" id="addDistractingSite">Add</button>
+                    </div>
+                    <div class="sites-list" id="distractingSitesList">
+                        <!-- Distracting sites will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>Sync Settings</h3>
+                <div class="sync-controls">
+                    <button class="btn-primary" id="syncData">Sync Data</button>
+                    <button class="btn-secondary" id="exportData">Export Data</button>
+                </div>
+                <div class="sync-status" id="syncStatus">
+                    Last sync: Never
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>Notifications</h3>
+                <div class="toggle-container">
+                    <label class="toggle">
+                        <input type="checkbox" id="notificationsEnabled" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span>Enable Notifications</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
